@@ -137,11 +137,10 @@
     <nav class="navbar">
         <ul class="navbar-nav">
             <li class="nav-item"><a href="home.jsp" class="nav-link active">Home</a></li>
-            <li class="nav-item"><a href="about.jsp" class="nav-link">About us</a></li>
+            <li class="nav-item"><a href="login.jsp" class="nav-link">About us</a></li>
             <li class="nav-item"><a href="contact.jsp" class="nav-link">Contact us</a></li>  
             <li class="nav-item"><a href="gallery.jsp" class="nav-link">Gallery</a></li>  
-            <li class="nav-item"><a href="admin.jsp" class="nav-link">Admin</a></li>
-            <li class="nav-item" style="float:right;"><a href="login.jsp" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="pay.jsp" class="nav-link">Pay</a></li>
         </ul>
     </nav>
     <section>
