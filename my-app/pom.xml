@@ -1,27 +1,60 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.app</groupId>
-  <artifactId>my-app</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>my-app Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-          <groupId>javax.servlet</groupId>
-          <artifactId>javax.servlet-api</artifactId>
-          <version>3.1.0</version>
-          <scope>provided</scope>
-      </dependency>
-  </dependencies>
-  <build>
-    <finalName>my-app</finalName>
-  </build>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>my-app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <dependencies>
+        <!-- Add your project dependencies here -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.9</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.9.9</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <!-- Define container configuration -->
+                    <container>
+                        <containerId>tomcat9x</containerId>
+                        <type>remote</type>
+                        <url>http://localhost:8081/manager/text</url>
+                        <username>system</username> <!-- Your Tomcat Manager username -->
+                        <password>2003</password> <!-- Your Tomcat Manager password -->
+                    </container>
+
+                    <!-- Define WAR file to deploy -->
+                    <deployables>
+                        <deployable>
+                            <file>${project.build.directory}/${project.build.finalName}.war</file>
+                        </deployable>
+                    </deployables>
+
+                    <configuration>
+                        <contextPath>/my-app</contextPath> <!-- Application Context Path -->
+                    </configuration>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
