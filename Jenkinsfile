@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clone the repository
-                git 'https://github.com/GracyBandaru/Devops_team.git'
+               git branch: 'main', url: 'https://github.com/GracyBandaru/Devops_team.git'
             }
         }
 
